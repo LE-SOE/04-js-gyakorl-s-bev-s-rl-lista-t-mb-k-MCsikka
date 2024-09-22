@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakancslista</title>
+    <style>
+        @keyframes dina_megy {
+            from {bottom: -300px;}
+            to {bottom: calc(100% + 300px);}
+        }
+        #dina {
+            position: absolute;
+            right: 0;
+            height: 300px;
+            bottom: -300px;
+        }
+        .dina_animacioval {
+            animation-name: dina_megy;
+            animation-duration: 10s;
+            animation-iteration-count: 5;
+        }
+    </style>
+</head>
+<body style="background-color: pink;">
+    <div style="text-align: center;">
+        <h1 style="text-align: center;">Ezt szeretném megtenni: </h1>
+        <input placeholder="Szia" style="background-color: deeppink; color:white;" id="dolgok">
+        <button onclick="hozzaad()" style="background-color: palevioletred;">Nyomjál meg</button>
+        <button onclick="kiszed()" style="background-color: darkmagenta;">Mégse</button>
+        <button onclick="reset()" style="background-color: blueviolet">Fujjj</button>
+    </div>
+    <ul id="bakancs_lista">
+
+    </ul>
+
+    <img id="dina" src="kepek/dina.webp" alt="Tütürü-türütütűűűűű">
+</body>
+<script>
+    let bakancs = []
+
+    function hozzaad(){
+        let terv = document.getElementById("dolgok").value
+        if(terv != "") {
+            bakancs.push(terv)
+            console.log("Bakancs:", bakancs)
+            let bakancslista = document.getElementById("bakancs_lista")
+            bakancslista.innerHTML += `<li>${terv} <input type="checkbox" onchange="dina()"> </li>`
+        } else {
+            alert("Üres!")
+        }
+    }
+    function kiszed(){
+        bakancs.pop(-1)
+        console.log("Bakancs:", bakancs)
+        let bakancslista = document.getElementById("bakancs_lista")
+        bakancslista.removeChild(bakancslista.lastChild)
+    }
+    function reset(){
+        bakancs = []
+        console.log("Bakancs:", bakancs)
+        let bakancslista = document.getElementById("bakancs_lista")
+        bakancslista.innerHTML = ""
+    }
+    function dina() {
+        console.log("Juhuuu")
+        let dina = document.getElementById("dina");
+        dina.classList.add("dina_animacioval");
+    }
+
+</script>
+
+</html>

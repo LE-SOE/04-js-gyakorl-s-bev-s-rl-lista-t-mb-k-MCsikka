@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Számológép</title>
+</head>
+<body>
+    <div>
+        <input id="elso">
+        <input id="masodik">
+        <button onclick="összeadas()">+</button>
+        <button onclick="kivonás()">-</button>
+        <button onclick="szorzás()">*</button>
+        <button onclick="osztás()">/</button>
+    </div>
+    <div>
+        Eredmény:
+        <span id="eredmeny"></span>
+    </div>
+</body>
+<script>
+    function beolvas1(){
+        let elsoszam = Number(document.getElementById("elso").value)
+
+        return elsoszam
+    }
+    function beolvas2(){
+        let masodikszam = Number(document.getElementById("masodik").value)
+
+        return masodikszam
+    }
+
+    function megjelenit(eredmeny){
+        document.getElementById("eredmeny").innerHTML = eredmeny
+    }
+
+    function összeadas(){
+        let elsoszam = beolvas1()
+        let masodikszam = beolvas2()
+
+        let eredmeny = elsoszam + masodikszam
+
+        megjelenit(eredmeny)
+    }
+    function kivonás(){
+        let elsoszam = beolvas1()
+        let masodikszam = beolvas2()
+
+        let eredmeny = elsoszam - masodikszam
+
+        megjelenit(eredmeny)
+    }
+    function osztás(){
+        let elsoszam = Number(document.getElementById("elso").value)
+        let masodikszam = Number(document.getElementById("masodik").value)
+        if (masodikszam!=0){
+            let eredmeny = elsoszam / masodikszam 
+            document.getElementById("eredmeny").innerHTML = eredmeny
+        } else {
+            alert("Nullával nem lehet osztani")
+        }
+
+        
+    }
+    function szorzás(){
+        
+        let elsoszam = beolvas1()
+        let masodikszam = beolvas2()
+
+        let eredmeny = elsoszam * masodikszam
+
+        megjelenit(eredmeny)
+    }
+
+    
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bevásárlólista</title>
+
+</head>
+<body>
+    <div>
+        <p>Cucc</p>
+        <input id="cucc">
+
+    </div>
+    <button onclick="hozzaad()">Listához ad</button>
+
+    <button onclick="reset()"> Reset lista</button>
+    <h1>Meg kell venni: <br> termékek: <span id="darab">0</span></h1>
+    <ul id="bev_lista">
+
+    </ul>
+</body>
+<script>
+    let termékek = ['Tej', 'Vaj', 'Csoki', 'Kávé']
+    reset()
+
+    function reset(){
+        console.log ('termekek változó', termékek)
+        console.log ('termekek változó', termékek[3])
+
+        let blista = document.getElementById("bev_lista")
+        blista.innerHTML = ""
+        termékek = ['Tej', 'Vaj', 'Csoki', 'Kávé']
+        for(termek_sorszam in termékek){
+            termek_sorszam = Number(termek_sorszam)
+            termek_nev = termékek[termek_sorszam]
+            console.log(1+termek_sorszam, termékek[termek_sorszam])
+            blista.innerHTML += `<li>${termek_nev}</li>`
+        }
+
+        document.getElementById("darab").innerHTML = termékek.length
+      }
+    
+      function hozzaad (){
+        let cuccNeve = document.getElementById("cucc").value
+        termékek.push(cuccNeve)
+        let blista = document.getElementById("bev_lista")
+        blista.innerHTML +=  "<li>" + cuccNeve + "</li>"
+
+        document.getElementById("darab").innerHTML = termékek.length
+        console.log(termékek.length, cuccNeve)
+
+      }
+</script>
+</html>
